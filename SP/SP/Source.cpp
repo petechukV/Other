@@ -9,7 +9,7 @@ void main() {
 	cout << s;*///suma rand nepar
 	/*union tcod { char sim;
 	struct { int x : 5;
-	int y : 3;
+	int y : 3;;'m;
 	}hh;
 	};
 	/////////////////////////////////////////
@@ -17,5 +17,6 @@ void main() {
 	cod.hh.x = 4;
 	cod.hh.y = 2;
 	cout << "\n"<<' '<<sizeof(cod)<<' '<<cod.sim;*///4d
+	cout << "poida lox";
 	system("pause >>void");
 }
