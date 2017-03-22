@@ -17,6 +17,7 @@ void main() {
 	cod.hh.x = 4;
 	cod.hh.y = 2;
 	cout << "\n"<<' '<<sizeof(cod)<<' '<<cod.sim;*///4d
-	cout << "poida lox";
+	cout << "zavdany' za 2007" << "\n"; 
+
 	system("pause >>void");
 }
