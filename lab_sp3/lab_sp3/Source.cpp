@@ -2,7 +2,7 @@
 using namespace std;
 int main() {
 	double a, b,res;
-	double c = 2.0, f = -5.0, d=-2;	
+	double c = 2.0, f = 5.0, d=-2.0;	
 	do {
 		cout << "Insert>a ""\n";
 		cin >> a;
@@ -13,15 +13,15 @@ int main() {
 			_asm
 			{
 				fld c
-				fld st(0)				
+				fxch st(0)				
 				fld b
-				fld st(1)
-				fld a
-				fld st(2)
+				fxch st(1)				
 				fadd st, st(1)
+				fld a
+				fxch st(2)
 				fdiv st, st(2)
 				fstp res
-				fstp st(3)
+				//fstp st(3)
 			}
 			cout <<"result "<< res << endl;
 			cout << " " << endl;
@@ -30,9 +30,9 @@ int main() {
 				_asm
 				{
 					fld d
-					fld st
+					fxch st
 					fstp res
-					fstp st(4)
+					// fstp st(4)
 				}
 				cout << "result " << res << endl;
 				cout << " " << endl;
@@ -40,16 +40,16 @@ int main() {
 				if (a < b) {
 					_asm
 					{
-						fld f
-						fld st(2)
-						fld b
-						fld st(1)
 						fld a
-						fld st(0)
-						fsub st(0) ,st(2)
+						fxch st(0)
+						fld f
+						fxch st(1)
+						fsub st(0),st(1)
+						fld b
+						fxch st(1)
 						fdiv st(0) ,st(1)
 						fstp res
-						fstp st(5)
+						//fstp st(5)
 					}
 					cout << "result " << res << endl;
 					cout << " " << endl;
