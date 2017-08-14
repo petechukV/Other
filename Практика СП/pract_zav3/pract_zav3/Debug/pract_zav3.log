@@ -1,0 +1,4 @@
+﻿  Assembling AsmSource.asm...
+  MyForm.obj : /DEBUG:FASTLINK не поддерживается, если присутствует управляемый код; выполняется перезапуск компоновки с /DEBUG:FULL
+  pract_zav3.vcxproj -> C:\Users\petec\OneDrive\Документы\Visual Studio 2015\Projects\pract_zav3\Debug\pract_zav3.exe
+  pract_zav3.vcxproj -> C:\Users\petec\OneDrive\Документы\Visual Studio 2015\Projects\pract_zav3\Debug\pract_zav3.pdb (Partial PDB)

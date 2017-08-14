@@ -1,0 +1,83 @@
+Microsoft (R) Macro Assembler Version 14.00.24210.0	    06/21/17 17:53:16
+Asembly.asm						     Page 1 - 1
+
+
+				.MODEL FLAT, C
+				.stack 1024h
+ 00000000			.CODE
+ 00000000			FUNC1 PROC C a:qword
+ 00000003  9B DB E3		finit
+ 00000006  DD 45 08		fld a
+ 00000009  D9 FB		fsincos
+ 0000000B  DE E1		fsubr 
+ 0000000D  DD 45 08		fld a
+ 00000010  D9 FB		fsincos
+ 00000012  DE C1		fadd 
+ 00000014  DE F1		fdivr 
+				ret
+ 00000018			FUNC1 ENDP
+
+				;proc 2
+
+ 00000018			FUNC2 PROC C a1:qword,b:qword,c1:qword
+ 0000001B  9B DB E3		finit
+ 0000001E  DD 45 08		fld a1  ;st1
+ 00000021  DD 45 18		fld c1  ;st
+ 00000024  DE C9		fmul 
+ 00000026  D9 F2		fptan
+ 00000028  DE C9		fmul 
+ 0000002A  D9 E8		fld1  ;st2
+ 0000002C  DD 45 08		fld a1 ;st1
+ 0000002F  DD 45 18		fld c1 ;st
+ 00000032  DE C9		fmul 
+ 00000034  D9 FF		fcos
+ 00000036  DE F9		fdiv 
+ 00000038  DE C1		fadd  
+				ret
+ 0000003C			FUNC2 ENDP
+Asembly.asm(33) : warning A6004:procedure argument or local not referenced : b
+				END
+Microsoft (R) Macro Assembler Version 14.00.24210.0	    06/21/17 17:53:16
+Asembly.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001024 Para	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000003C Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+FUNC1  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000018 Public C
+  a  . . . . . . . . . . . . . .	QWord	 bp + 00000008
+FUNC2  . . . . . . . . . . . . .	P Near	 00000018 _TEXT	Length= 00000024 Public C
+  a1 . . . . . . . . . . . . . .	QWord	 bp + 00000008
+  b  . . . . . . . . . . . . . .	QWord	 bp + 00000010
+  c1 . . . . . . . . . . . . . .	QWord	 bp + 00000018
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000001h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   1 Warnings
+	   0 Errors

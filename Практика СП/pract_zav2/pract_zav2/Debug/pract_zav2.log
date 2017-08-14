@@ -1,0 +1,4 @@
+﻿  MyForm.cpp
+  MyForm.obj : /DEBUG:FASTLINK не поддерживается, если присутствует управляемый код; выполняется перезапуск компоновки с /DEBUG:FULL
+  pract_zav2.vcxproj -> C:\Users\petec\OneDrive\Документы\Visual Studio 2015\Projects\pract_zav2\Debug\pract_zav2.exe
+  pract_zav2.vcxproj -> C:\Users\petec\OneDrive\Документы\Visual Studio 2015\Projects\pract_zav2\Debug\pract_zav2.pdb (Partial PDB)

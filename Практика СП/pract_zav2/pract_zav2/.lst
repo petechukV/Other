@@ -1,0 +1,80 @@
+Microsoft (R) Macro Assembler Version 14.00.24210.0	    06/21/17 12:40:05
+Asembly.asm						     Page 1 - 1
+
+
+				.MODEL FLAT, C
+				.stack 1024h
+ 00000000			.CODE
+ 00000000			FUNC1 PROC C a:qword
+ 00000003  DD 45 08		fld a
+ 00000006  D9 FB		fsincos
+ 00000008  D8 E1		fsub st,st(1)
+ 0000000A  DD 45 08		fld a
+ 0000000D  D9 FB		fsincos
+ 0000000F  D8 C1		fadd st,st(1)
+ 00000011  D8 F2		fdiv st,st(2)
+				ret
+ 00000015			FUNC1 ENDP
+
+				;proc 2
+
+ 00000015			FUNC2 PROC C a1:qword,b:qword,c1:qword
+ 00000018  DD 45 08		fld a1  ;st1
+ 0000001B  DD 45 18		fld c1  ;st
+ 0000001E  D8 C9		fmul st,st(1)
+ 00000020  D9 F2		fptan
+ 00000022  D8 C9		fmul st,st(1)
+ 00000024  DD 45 10		fld b  ;st2
+ 00000027  DD 45 08		fld a1 ;st1
+ 0000002A  DD 45 18		fld c1 ;st
+ 0000002D  D8 C9		fmul st,st(1)
+ 0000002F  D9 FF		fcos
+ 00000031  D8 FA		fdivr st,st(2)
+ 00000033  D8 C3		fadd st,st(3) 
+				ret
+ 00000037			FUNC2 ENDP
+				END
+Microsoft (R) Macro Assembler Version 14.00.24210.0	    06/21/17 12:40:05
+Asembly.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001024 Para	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000037 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+FUNC1  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000015 Public C
+  a  . . . . . . . . . . . . . .	QWord	 bp + 00000008
+FUNC2  . . . . . . . . . . . . .	P Near	 00000015 _TEXT	Length= 00000022 Public C
+  a1 . . . . . . . . . . . . . .	QWord	 bp + 00000008
+  b  . . . . . . . . . . . . . .	QWord	 bp + 00000010
+  c1 . . . . . . . . . . . . . .	QWord	 bp + 00000018
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000001h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   0 Warnings
+	   0 Errors

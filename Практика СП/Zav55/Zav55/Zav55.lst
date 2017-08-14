@@ -1,0 +1,150 @@
+Microsoft (R) Macro Assembler Version 14.00.24210.0	    06/30/17 00:47:33
+AsmSource.asm						     Page 1 - 1
+
+
+				.586
+				.MODEL FLAT, C
+ 00000000			.DATA
+ 00000000			 mn5 dq -6.0
+	   C018000000000000
+ 00000008			 mn3 dq -4.0
+	   C010000000000000
+ 00000010			 mn1 dq 0.0
+	   0000000000000000
+ 00000018			 two dq 2.0
+	   4000000000000000
+ 00000020			 four dq 4.0
+	   4010000000000000
+ 00000028			 dvin dq 12.0
+	   4028000000000000
+ 00000030			 five dq 5.0
+	   4014000000000000
+ 00000038			 co5 dq -0.5
+	   BFE0000000000000
+ 00000040			 null dq 0.0
+	   0000000000000000
+ 00000048			 tmp dq ?
+	   0000000000000000
+ 00000000			.CODE
+ 00000000			FUNC1 PROC C x:qword  
+				      
+ 00000003  DD 45 08				fld x
+ 00000006  DC 1D 00000000 R			fcomp mn5
+ 0000000C  9B DF E0				fstsw ax
+ 0000000F  9E					sahf
+ 00000010  72 78				jb mz		
+						
+ 00000012  DD 45 08				fld x
+ 00000015  DC 1D 00000008 R			fcomp mn3
+ 0000001B  9B DF E0				fstsw ax
+ 0000001E  9E					sahf
+ 0000001F  72 2F				jb m1		
+
+ 00000021  DD 45 08				fld x
+ 00000024  DC 1D 00000010 R			fcomp mn1
+ 0000002A  9B DF E0				fstsw ax
+ 0000002D  9E					sahf
+ 0000002E  72 2A				jb m2
+
+ 00000030  DD 45 08				fld x
+ 00000033  DC 1D 00000018 R			fcomp two
+ 00000039  9B DF E0				fstsw ax
+ 0000003C  9E					sahf
+ 0000003D  72 2C				jb m3		
+						
+ 0000003F  DD 45 08				fld x
+ 00000042  DC 1D 00000028 R			fcomp dvin
+ 00000048  9B DF E0				fstsw ax
+ 0000004B  9E					sahf
+ 0000004C  72 27				jb m4
+ 0000004E  77 3A				ja mz
+
+ 00000050					m1:
+ 00000050  DD 05 00000018 R			fld two
+ 00000056  D9 E0				fchs		
+ 00000058  EB 34				jmp ex
+
+ 0000005A					m2:
+ 0000005A  DD 05 00000020 R			fld four
+ 00000060  D9 E8				fld1
+ 00000062  DE F1				fdivr
+ 00000064  DD 45 08				fld x
+ 00000067  DE C9				fmul
+ 00000069  EB 23				jmp ex
+
+ 0000006B					m3:
+ 0000006B  DD 45 08				fld x
+ 0000006E  DD 45 08				fld x
+ 00000071  DE C9				fmul
+ 00000073  EB 19				jmp ex
+
+ 00000075					m4:
+ 00000075  DD 05 00000038 R			fld co5
+ 0000007B  DD 45 08				fld x
+ 0000007E  DE C9				fmul
+ 00000080  DD 05 00000030 R			fld five
+ 00000086  DE C1				fadd
+ 00000088  EB 04				jmp ex		
+
+ 0000008A					mz:
+ 0000008A  D9 EE				fldz
+ 0000008C  EB 00				jmp ex
+ 0000008E					ex:
+						ret
+ 00000090			FUNC1  ENDP
+				END
+Microsoft (R) Macro Assembler Version 14.00.24210.0	    06/30/17 00:47:33
+AsmSource.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000050 Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000090 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+FUNC1  . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000090 Public C
+  x  . . . . . . . . . . . . . .	QWord	 bp + 00000008
+  m1 . . . . . . . . . . . . . .	L Near	 00000050 _TEXT	
+  m2 . . . . . . . . . . . . . .	L Near	 0000005A _TEXT	
+  m3 . . . . . . . . . . . . . .	L Near	 0000006B _TEXT	
+  m4 . . . . . . . . . . . . . .	L Near	 00000075 _TEXT	
+  mz . . . . . . . . . . . . . .	L Near	 0000008A _TEXT	
+  ex . . . . . . . . . . . . . .	L Near	 0000008E _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000001h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+co5  . . . . . . . . . . . . . .	QWord	 00000038 _DATA	
+dvin . . . . . . . . . . . . . .	QWord	 00000028 _DATA	
+five . . . . . . . . . . . . . .	QWord	 00000030 _DATA	
+four . . . . . . . . . . . . . .	QWord	 00000020 _DATA	
+mn1  . . . . . . . . . . . . . .	QWord	 00000010 _DATA	
+mn3  . . . . . . . . . . . . . .	QWord	 00000008 _DATA	
+mn5  . . . . . . . . . . . . . .	QWord	 00000000 _DATA	
+null . . . . . . . . . . . . . .	QWord	 00000040 _DATA	
+tmp  . . . . . . . . . . . . . .	QWord	 00000048 _DATA	
+two  . . . . . . . . . . . . . .	QWord	 00000018 _DATA	
+
+	   0 Warnings
+	   0 Errors
